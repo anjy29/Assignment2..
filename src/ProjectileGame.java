@@ -82,5 +82,51 @@ public class ProjectileGame {
         return angle;
     }
 
+    // Function to calculate where the shot lands
+    public static double getShot(double startX) {
+        double v0 = getPower();
+        double angleDeg = getAngle();
+        double angleRad = Math.toRadians(angleDeg);
+
+        // Calculate flight time using vertical motion formula
+        double flightTime = (2 * v0 * Math.sin(angleRad)) / GRAVITY;
+
+        // Calculate horizontal landing position
+        double landingX = startX + (v0 * Math.cos(angleRad)) * flightTime;
+
+        System.out.printf("Shot lands at x = %.2f\n", landingX);
+        return landingX;
+    }
+
+    // Function to run one game between two players
+    public static int runGame(String player1, String player2) {
+        double player1Pos = rand.nextInt(121);
+        double player2Pos = rand.nextInt(121);
+
+
+
+        System.out.printf("%s starts at x = %.2f\n", player1, player1Pos);
+        System.out.printf("%s starts at x = %.2f\n", player2, player2Pos);
+
+        boolean gameOver = false;
+        int currentPlayer = 1;
+
+        while (!gameOver) {
+            System.out.printf("\n%s's turn:\n", currentPlayer == 1 ? player1 : player2);
+            double shotX = getShot(currentPlayer == 1 ? player1Pos : player2Pos);
+            double targetX = currentPlayer == 1 ? player2Pos : player1Pos;
+
+            if (Math.abs(shotX - targetX) < 1.0) {
+                gameOver = true;
+            } else {
+                System.out.println("Missed! Next player's turn.");
+                currentPlayer = (currentPlayer == 1) ? 2 : 1;
+            }
+        }
+
+        return currentPlayer; // winner
+    }
+
+
 
 }
