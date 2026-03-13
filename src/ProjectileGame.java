@@ -33,8 +33,20 @@ public class ProjectileGame {
             System.out.println("🎉 Congratulations, " + (winner == 1 ? player1 : player2) + " wins this round!");
 
 
-
-
-
+            // Ask if they want to play again
+            System.out.print("Do you want to play again? (yes/no): ");
+            String response = input.nextLine().trim().toLowerCase();
+            if (response.equals("no")) {
+                playAgain = false;
+            }
         }
+
+        System.out.println("Thanks for playing! Goodbye!");
+    }
+
+
+
+
+
+
 }
