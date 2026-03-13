@@ -39,6 +39,10 @@ public class ProjectileGame {
         System.out.print("Enter name for Player 2: ");
         String player2 = input.nextLine();
 
+
+        int score1 = 0;
+        int score2 = 0;
+
         boolean playAgain = true;
 
 
@@ -121,10 +125,10 @@ public class ProjectileGame {
         double angleRad = Math.toRadians(angleDeg);
 
         // Calculate flight time using vertical motion formula
-        double flightTime = (2 * v0 * Math.sin(angleRad)) / GRAVITY;
+        double t = (2 * v0 * Math.sin(angleRad)) / GRAVITY;
 
         // Calculate horizontal landing position
-        double landingX = startX + (v0 * Math.cos(angleRad)) * flightTime;
+        double landingX = startX + (v0 * Math.cos(angleRad)) * t;
 
         System.out.printf("Shot lands at x = %.2f\n", landingX);
         return landingX;
@@ -160,7 +164,5 @@ public class ProjectileGame {
 
         return currentPlayer; // winner
     }
-
-
 
 }
