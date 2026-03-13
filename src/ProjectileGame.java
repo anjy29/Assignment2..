@@ -27,6 +27,14 @@ public class ProjectileGame {
         boolean playAgain = true;
 
 
+        // Main game loop
+        while (playAgain) {
+            int winner = runGame(player1, player2);
+            System.out.println("🎉 Congratulations, " + (winner == 1 ? player1 : player2) + " wins this round!");
 
 
+
+
+
+        }
 }
