@@ -59,6 +59,28 @@ public class ProjectileGame {
                 System.out.println("Invalid input. Enter a number.");
                 input.next();
             }
-
         }
+        input.nextLine();
+        return power;
     }
+    // Function to get projectile angle from user
+    public static double getAngle() {
+        double angle;
+        while (true) {
+            System.out.print("Enter shot angle (0-180 degrees): ");
+            if (input.hasNextDouble()) {
+                angle = input.nextDouble();
+                if (angle >= 0 && angle <= 180) break;
+                else System.out.println("Angle must be between 0 and 180.");
+            } else {
+                System.out.println("Invalid input. Enter a number.");
+                input.next();
+
+            }
+        }
+        input.nextLine(); // clear buffer
+        return angle;
+    }
+
+
+}
