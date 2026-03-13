@@ -42,11 +42,23 @@ public class ProjectileGame {
         }
 
         System.out.println("Thanks for playing! Goodbye!");
+
+
     }
 
+    // Function to get projectile power from user
+    public static double getPower() {
+        double power;
+        while (true) {
+            System.out.print("Enter shot power (1-1000): ");
+            if (input.hasNextDouble()) {
+                power = input.nextDouble();
+                if (power >= 1 && power <= 1000) break;
+                else System.out.println("Power must be between 1 and 1000.");
+            } else {
+                System.out.println("Invalid input. Enter a number.");
+                input.next();
+            }
 
-
-
-
-
-}
+        }
+    }
